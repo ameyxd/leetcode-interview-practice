@@ -14,3 +14,6 @@ class Solution:
                 left += 1
             highest_sq_index -= 1
         return sq_nums
+
+    
+    # Strat: Two pointers. Start one at start, one at end move one by one and add to squares list from end.
