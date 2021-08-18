@@ -7,3 +7,5 @@ class Solution:
                 nextNonDup += 1
             i += 1
         return nextNonDup + 1
+    
+    # Strat: Two pointers: next non dup and i to iterate
