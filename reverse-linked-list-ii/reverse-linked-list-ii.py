@@ -24,3 +24,5 @@ class Solution:
             tail.next = tail.next.next
             p.next.next = temp
         return dummy.next
+    
+    # Strat: Use dummy node for starting. Then draw diagram to do the link changes
