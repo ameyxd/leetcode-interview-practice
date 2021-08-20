@@ -35,3 +35,5 @@ class Solution:
             return True
         
         return False
+    
+    ## Strat: first get to middle node. Then reverse the elements from middle to end. Then check first and last elements one by one until condition is met.
