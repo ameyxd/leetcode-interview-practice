@@ -28,7 +28,7 @@ class Solution:
                 cycle_length = self.getLength(slow)
                 print(cycle_length)
                 break
-        else:
+        else: # Important - while-else clause in case there is no cycle
             return None
         return self.findStart(head, cycle_length)
         
@@ -41,4 +41,15 @@ class Solution:
             ptr2 = ptr2.next
             ptr1 = ptr1.next
         return ptr1
-            
+
+    
+    ## Strat: find where the fast and slow pointers meet, if start of cycle is at pos m, and fast and slow meet at k steps from m:
+    
+    # we know that 
+    # dist(fast) = 2d(slow)
+#     m + xn + k = 2 (m + yn + k)
+#     m + k = (x - 2y) n
+#     m + k is a multiple of n
+    
+#     moving m steps by slow pointer from the start is equal to moving n-k steps for fast pointer from kth point in cycle. 
+    
