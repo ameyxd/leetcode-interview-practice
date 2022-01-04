@@ -12,7 +12,21 @@ class Solution:
             self.inorder(root.right, result)
         
     
-    def inorderTraversal(self, root: Optional[TreeNode]) -> List[int]:
+    def inorderTraversal_recursive(self, root: Optional[TreeNode]) -> List[int]:
         result = []
         self.inorder(root, result)
+        return result
+    
+    # Iterative
+    def inorderTraversal(self, root: Optional[TreeNode]) -> List[int]:
+        result, stack = [], []
+        
+        while stack or root:
+            if root:
+                stack.append(root)
+                root = root.left
+            else:
+                popped = stack.pop()
+                result.append(popped.val)
+                root = popped.right
         return result
