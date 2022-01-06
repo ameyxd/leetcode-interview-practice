@@ -1,17 +1,17 @@
 class Solution:
+    # Logic: : If a sorted array is shifted, if you take the middle, always one side will be sorted. Take the recursion according to that rule.
     def search(self, nums: List[int], target: int) -> int:
         left, right = 0, len(nums) - 1
-    # def recursive_search(self, nums, left, right, target):
         while left <= right:
             mid = left + (right - left) // 2
             if nums[mid] == target:
                 return mid
-            elif nums[mid] >= nums[left]:
+            elif nums[mid] >= nums[left]: # this means left side is sorted
                 if nums[left] <= target and target < nums[mid]:
                     right = mid - 1
                 else:
                     left = mid + 1
-            else:
+            else: # right side is sorted
                 if nums[mid] < target and target <= nums[right]:
                     left = mid + 1
                 else:
