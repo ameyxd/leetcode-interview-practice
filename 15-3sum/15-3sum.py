@@ -1,6 +1,5 @@
 class Solution:
     def threeSum(self, nums: List[int]) -> List[List[int]]:
-        
         # Strat: Sort list, pick a one by one, and apply left-right pointer technique from Two Sum II to get theb and c that sum to 0
         
         nums = sorted(nums)
