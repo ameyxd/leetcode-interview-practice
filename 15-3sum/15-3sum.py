@@ -6,8 +6,8 @@ class Solution:
         for i, a in enumerate(nums):
             if i > 0 and a == nums[i - 1]:
                 continue
-            if a > 0:
-                return res
+            # if a > 0:
+            #     return res
             l, r = i + 1, len(nums) - 1
             while l < r:
                 threeSum = nums[l] + nums[r] + a
