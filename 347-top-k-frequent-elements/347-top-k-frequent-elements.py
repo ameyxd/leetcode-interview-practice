@@ -12,7 +12,7 @@ class Solution:
 #         result = []
         
 #         # Default heap is minheap: convert to maxheap by storing negative of the keys
-#         # Step 1: Push into maxheap all the elements - one better way would be to maintain min heap
+#         # Step 1: Push into maxheap all the elements - one better way would be to maintain min heap that’s kept at size k, if its bigger than k pop the min, by the end it should be left with k largest;
 #         for num, count in count_dict.items():
 #             heapq.heappush(heap, (-count, num))
 
