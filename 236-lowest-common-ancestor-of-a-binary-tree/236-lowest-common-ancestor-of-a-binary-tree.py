@@ -30,7 +30,7 @@ class Solution:
         
         parent_dict = {root: None}
         
-        while p not in parent_dict or q not in parent_dict:
+        while p not in parent_dict or q not in parent_dict: # Do until p and q are parent dictionary 
             node = stack.pop()
             if node.left:
                 parent_dict[node.left] = node
