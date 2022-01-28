@@ -9,7 +9,7 @@ class Solution:
     def lowestCommonAncestor(self, root: 'TreeNode', p: 'TreeNode', q: 'TreeNode') -> 'TreeNode':
         # Strat: LCA will be either where the split occurred, i.e., p is on left of node and q is on right of node, or if we reach p or q, i.e., p is ancestor to itself and q or q is ancestor it p or itself
         curr = root
-        while True:    # Essentiallty we want to keep going until we guaranteed return
+        while True:    # Essentiallty we want to keep going until we guaranteed return (could also use curr instead of True)
             if p.val > curr.val and q.val > curr.val:
                 curr = curr.right
             elif p.val < curr.val and q.val < curr.val:
