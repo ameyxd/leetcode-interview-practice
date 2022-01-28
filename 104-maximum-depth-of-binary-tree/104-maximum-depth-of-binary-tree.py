@@ -26,7 +26,7 @@ class Solution:
 #                 stack.append((node.right, depth + 1))
 #         return res
                 
-        # Iterative BFS Solution
+        # Iterative BFS Solution: Run for loop inside while queue exists, for the entire length of the queue, only update when out of for loop
         
         q, level = deque([root]), 0
         while q:
