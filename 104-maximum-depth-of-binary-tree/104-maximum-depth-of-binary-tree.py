@@ -15,14 +15,26 @@ class Solution:
 #         return max(left_height, right_height)
     
 
-        # Iterative DFS Solution
-        stack = [(root, 1)]
-        res = 1
-        while stack:
-            node, depth = stack.pop()
-            if node: # Since I have set this code to include null nodes in stack
-                res = max(res, depth)
-                stack.append((node.left, depth + 1))
-                stack.append((node.right, depth + 1))
-        return res
+#         # Iterative DFS Solution: Store (node, depth at that node) in stack, pop and check if res is greater than current depth and return res
+#         stack = [(root, 1)]
+#         res = 1
+#         while stack:
+#             node, depth = stack.pop()
+#             if node: # Since I have set this code to include null nodes in stack
+#                 res = max(res, depth)
+#                 stack.append((node.left, depth + 1))
+#                 stack.append((node.right, depth + 1))
+#         return res
                 
+        # Iterative BFS Solution
+        
+        q, level = deque([root]), 0
+        while q:
+            for i in range(len(q)):
+                node = q.popleft()
+                if node.left:
+                    q.append(node.left)
+                if node.right:
+                    q.append(node.right)
+            level += 1
+        return level
