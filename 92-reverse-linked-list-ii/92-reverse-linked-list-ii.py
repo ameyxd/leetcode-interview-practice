@@ -17,6 +17,8 @@ class Solution:
             p = p.next
 
         tail = p.next
+        
+        # get to the l - 1th node, then call reverse function to reverse l to r nodes, return new head of reversed part and tail to link
     
         def reverse_int(node, count):
             prev, curr = None, node
@@ -29,6 +31,8 @@ class Solution:
             return prev, next
             
         new_head, r_next = reverse_int(tail, right - left + 1)
+        
+        # assign new head and new right_end
         p.next = new_head
         
         tail.next = r_next
