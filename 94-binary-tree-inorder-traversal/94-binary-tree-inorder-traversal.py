@@ -31,6 +31,7 @@ class Solution:
                 root = popped.right
         return result
     
+    # Piyush strat with stack of (node, visited)
     def inorderTraversal(self, root: Optional[TreeNode]) -> List[int]:
         stack, res = [(root, False)], []
         while stack:
