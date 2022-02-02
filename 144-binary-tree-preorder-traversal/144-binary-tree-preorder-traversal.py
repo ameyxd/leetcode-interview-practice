@@ -34,3 +34,20 @@ class Solution:
 #             if node.left:
 #                 stack.append(node.left)
 #         return preorder_res
+
+    # Piyush strategy - visited nodes    
+    def preorderTraversal(self, root: Optional[TreeNode]) -> List[int]:
+        stack, res = [(root, False)], []
+        while stack:
+            node, visited = stack.pop()
+            if not node:
+                continue
+            if visited:
+                res.append(node.val)
+            else:
+                if node.right:
+                    stack.append((node.right, False))
+                if node.left:
+                    stack.append((node.left, False))
+                stack.append((node, True))
+        return res
