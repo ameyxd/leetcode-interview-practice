@@ -43,7 +43,7 @@ class Solution:
 #             tail.next = l2
 #         return dummy.next
 
-        # Solution 2: Heap
+        # Solution 2: Heap with all node starts from list, then pop one by one and and the next to the popped node to heap
         heap = []
         for l in lists:
             if l:
@@ -60,35 +60,3 @@ class Solution:
             ptr = ptr.next
         
         return dummy.next
-            
-            
-        
-#         import heapq
-
-# class Solution:
-#     def mergeKLists(self, lists: List[Optional[ListNode]]) -> Optional[ListNode]:
-#         heap = []
-        
-#         for li in lists:
-#             if li:
-#                 heap.append((li.val, li))
-#         o(k)
-#         heapq.heapify(heap)
-#         o(k + nlogk)
-#         merge_ptr = merge_head = None
-#         #nlogk
-#         while heap:
-#         		#logk
-#             val, node = heapq.heappop(heap)
-            
-#             if merge_head is None:
-#                 merge_head = merge_ptr = node
-#             else:
-#                 merge_ptr.next = node
-#                 merge_ptr = merge_ptr.next
-            
-#             if node.next:
-#             		#logk
-#                 heapq.heappush(heap, (node.next.val, node.next))
-        
-#         return merge_head
