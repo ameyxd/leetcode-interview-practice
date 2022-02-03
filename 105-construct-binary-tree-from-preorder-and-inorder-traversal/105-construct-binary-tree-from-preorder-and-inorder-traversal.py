@@ -6,6 +6,9 @@
 #         self.right = right
 class Solution:
     def buildTree(self, preorder: List[int], inorder: List[int]) -> Optional[TreeNode]:
+        # preorder's first element will always have current root
+        # inorder can help break left subtree and right subtree using the root
+        # recursively send updated preorder and inorder lists to assign root.left and root.right
         if not preorder or not inorder:
             return None
         
