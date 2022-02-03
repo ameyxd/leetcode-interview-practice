@@ -21,6 +21,8 @@ class Solution:
 #                     queue.append(node.right)
 #             res.append(level_res)
 #         return res
+    
+        # Same solution without using a deque
 
         if not root:
             return []
