@@ -5,7 +5,8 @@
 #         self.left = left
 #         self.right = right
 class Solution:
-    def postorderTraversal(self, root: Optional[TreeNode]) -> List[int]:
+    # Recersive solution
+    def postorderTraversal_1(self, root: Optional[TreeNode]) -> List[int]:
         res = []
         
         def traverse(root, res):
@@ -15,3 +16,21 @@ class Solution:
                 res.append(root.val)
         traverse(root, res)
         return res
+    
+    # Recersive solution
+    def postorderTraversal(self, root: Optional[TreeNode]) -> List[int]:
+        stack, res = [(root, False)], []
+        while stack:
+            node, visited = stack.pop()
+            if not node:
+                continue
+            if visited:
+                res.append(node.val)
+            else:
+                stack.append((node, True))
+                if node.right:
+                    stack.append((node.right, False))
+                if node.left:
+                    stack.append((node.left, False))
+        return res
+                    
