@@ -9,6 +9,8 @@ class Solution:
         if not root:
             return False
         targetSum -= root.val
-        if not root.right and not root.left: # Reached a leaf node
+        if not root.left and not root.right: # If leaf node is found
             return targetSum == 0
         return self.hasPathSum(root.left, targetSum) or self.hasPathSum(root.right, targetSum)
+
+    
