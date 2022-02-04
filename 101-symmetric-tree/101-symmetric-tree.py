@@ -5,6 +5,7 @@
 #         self.left = left
 #         self.right = right
 class Solution:
+    # Recursive solution
     def isMirror(self, node1, node2):
         if not node1 and not node2:
             return True
@@ -14,3 +15,4 @@ class Solution:
     
     def isSymmetric(self, root: Optional[TreeNode]) -> bool:        
         return self.isMirror(root, root)
+    
