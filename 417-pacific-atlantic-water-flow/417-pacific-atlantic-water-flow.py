@@ -1,5 +1,10 @@
 class Solution:
     def pacificAtlantic(self, heights: List[List[int]]) -> List[List[int]]:
+        # Strat: two visit sets - one to track all possible nodes accessible from pacific and one from atlantic
+        # Recursive dfs - run dfs for leftmost and topmost elements to check accessibility from pacific and
+        # rightmost and bottommost elements to check accesssibility from atlantic
+        # Get intersection of the two sets
+        
         rows, cols = len(heights), len(heights[0])
         visit_pac, visit_atl = set(), set()
         
@@ -17,10 +22,12 @@ class Solution:
             dfs(row, col + 1, visit_set, heights[row][col])
         
         
+        # Fix the first and last row and check if they are accessible from pacific ocean and atlantic ocean respectively
         for col in range(cols):
             dfs(0, col, visit_pac, heights[0][col])
             dfs(rows - 1, col, visit_atl, heights[rows - 1][col])
         
+        # Fix the first and last column and check if they are accessible from pacific ocean and atlantic ocean respectively
         for row in range(rows):
             dfs(row, 0, visit_pac, heights[row][0])
             dfs(row, cols - 1, visit_atl, heights[row][cols - 1])
