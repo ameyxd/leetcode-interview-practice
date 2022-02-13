@@ -14,11 +14,12 @@ class Solution:
             if preMap[course] == []:
                 return True
             
+            # Add course to visit set to keep track of if there is a loop
             visitSet.add(course)
             for pre in preMap[course]:
-                if not dfs(pre):
+                if not dfs(pre): # Loop found
                     return False
-            visitSet.remove(course)
+            visitSet.remove(course) # Done with course and its prerequisites
             preMap[course] = []
             return True
         
