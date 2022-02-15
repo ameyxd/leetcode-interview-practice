@@ -31,9 +31,5 @@ class Solution:
                 if indegree[child] == 0:
                     queue.append(child)
         
-        if len(top_sort_order) != len(indegree):
-            return ""
         
-        print(top_sort_order)
-        
-        return ''.join(top_sort_order) #if len(top_sort_order) == len(indegree) else ""
+        return ''.join(top_sort_order) if len(top_sort_order) == len(indegree) else ""
