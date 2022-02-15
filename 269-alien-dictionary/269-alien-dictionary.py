@@ -23,16 +23,16 @@ class Solution:
                 elif j == min_len - 1 and len(w1) > len(w2): # "abc", "ab" gives an error, but "ab", "abc" doesn't -> fix using else statement
                     return ""
                 
-        queue = collections.deque([k for k in indegree.keys() if indegree[k] == 0])
-        top_sort_order = []
+        source_queue = collections.deque([k for k in indegree.keys() if indegree[k] == 0])
+        alien_dict = []
         
-        while queue:
-            word = queue.popleft()
-            top_sort_order.append(word)
+        while source_queue:
+            word = source_queue.popleft()
+            alien_dict.append(word)
             for child in adj[word]:
                 indegree[child] -= 1
                 if indegree[child] == 0:
-                    queue.append(child)
+                    source_queue.append(child)
         
         
-        return ''.join(top_sort_order) if len(top_sort_order) == len(indegree) else ""
+        return ''.join(alien_dict) if len(alien_dict) == len(indegree) else ""
