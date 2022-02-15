@@ -13,10 +13,10 @@ class Solution:
         
         while queue:
             course = queue.popleft()
-            top_sort_res.append(course)
             for prereq in adj[course]:
                 indegree[prereq] -= 1
                 if indegree[prereq] == 0:
                     queue.append(prereq)
+            top_sort_res.append(course)
 
         return top_sort_res if len(top_sort_res) == numCourses else [] #Else there is a cycle
