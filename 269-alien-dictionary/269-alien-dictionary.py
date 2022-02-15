@@ -26,13 +26,14 @@ class Solution:
         source_queue = collections.deque([k for k in indegree.keys() if indegree[k] == 0])
         alien_dict = []
         
+        # Run topological sort using a queue to keep track of all the sources (indegree == 0)
         while source_queue:
             word = source_queue.popleft()
-            alien_dict.append(word)
+            alien_dict.append(word) # Every letter out of the queue is one that has no remaining dependencies
             for child in adj[word]:
                 indegree[child] -= 1
                 if indegree[child] == 0:
                     source_queue.append(child)
         
         
-        return ''.join(alien_dict) if len(alien_dict) == len(indegree) else ""
+        return ''.join(alien_dict) if len(alien_dict) == len(indegree) else "" # if alien dict is not the same size as the number of characters we have in the list, there is a cycle, i.e., inconsistency in input so dict cannot be built
