@@ -32,8 +32,10 @@ class Solution:
 #                 return False
         # return True
     
-    # Another strat: Topological sort
+    # Another strat: Topological sort - essentially glorified way of checking cycle. If cycle is present, top sort will not be the same length as the number of vertices
+            # Adjacency list
             adj = collections.defaultdict(list)
+            # maintain indegree hashmap
             indegree = {}
             for course, prereq in prerequisites:
                 adj[prereq].append(course)
@@ -44,8 +46,10 @@ class Solution:
             while queue:
                 course = queue.popleft()
                 top_sort.append(course)
+                # For every node linking to node in queue, reduce its indegree by 1 and add to queue if its indegree becomes 0
                 for prereq in adj[course]:
                     indegree[prereq] -= 1
                     if indegree[prereq] == 0:
                         queue.append(prereq)
+            # If topological sort is not the length of the number of nodes, there was a cycle
             return len(top_sort) == numCourses
