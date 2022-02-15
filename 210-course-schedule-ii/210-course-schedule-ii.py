@@ -8,7 +8,7 @@ class Solution:
             indegree[course] = indegree.get(course, 0) + 1
             adj[prereq].append(course)
             
-        queue = collections.deque([k for k in range(numCourses) if k not in indegree])
+        queue = collections.deque([k for k in range(numCourses) if k not in indegree.keys()])
         top_sort_res = []
         
         while queue:
