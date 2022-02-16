@@ -1,6 +1,10 @@
 class Solution:
     def validTree(self, n: int, edges: List[List[int]]) -> bool:
-        # Valid tree will not have a cycle and will not have unconnected nodes
+        # Valid tree will not have a cycle and will not have unconnected nodes - try topological sort logic, except don't care about topological sort output, care more about whether all the nodes have 0 indegree at the end, i.e., 
+        # Indegree 0 for all nodes at the end means all nodes were reached and their edges removed
+        
+        # Additionally, if the # of edges < number of nodes - 1: graph isn't fully connected
+        # if the number of edges > number of nodes - 1: cycle may be present
         
         if len(edges) != n - 1:
             return False
