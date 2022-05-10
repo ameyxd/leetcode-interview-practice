@@ -18,20 +18,21 @@ class Solution:
             adj[n2].append(n1)
             indegree[n1] += 1
             indegree[n2] += 1
+
+        # Solution 1 using queue and BFS
+        queue = collections.deque([k for k in indegree if indegree[k] == 1]) # Indegree will be 1 at the min since this the edges are undirected
+        top_sort = []
         
-#         queue = collections.deque([k for k in indegree if indegree[k] == 1]) # Indegree will be 1 at the min since this the edges are undirected
-#         top_sort = []
-        
-#         while queue:
-#             node = queue.popleft()
-#             top_sort.append(node)
-#             for nei in adj[node]:
-#                 indegree[nei] -= 1
-#                 if indegree[nei] == 1:
-#                     queue.append(nei)
+        while queue:
+            node = queue.popleft()
+            top_sort.append(node)
+            for nei in adj[node]:
+                indegree[nei] -= 1
+                if indegree[nei] == 1:
+                    queue.append(nei)
         
         
-#         return all(val == 0 for val in indegree.values())
+        return all(val == 0 for val in indegree.values())
     
         # Solution 2 using visited set and DFS
         visited = set()
