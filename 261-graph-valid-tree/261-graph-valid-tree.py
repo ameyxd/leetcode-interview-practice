@@ -37,8 +37,8 @@ class Solution:
         visited = set()
         
         def dfs(node):
-            if node in visited:
-                return
+            # if node in visited:
+            #     return
             visited.add(node)
             for nei in adj[node]:
                 if nei not in visited:
