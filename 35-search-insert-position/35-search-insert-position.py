@@ -18,7 +18,7 @@ class Solution:
         left, right = 0, len(nums) # Since search space needs to be one larger if target is greater than last element it will have to go in the end acc to question
         while left < right:
             mid = left + (right - left) // 2
-            if nums[mid] >= target:
+            if nums[mid] >= target: # condition: We need to find the min k value that satisfies nums[k] >= target
                 right = mid
             else:
                 left = mid + 1
