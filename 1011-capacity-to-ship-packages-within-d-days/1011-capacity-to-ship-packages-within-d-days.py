@@ -24,3 +24,5 @@ class Solution:
             else:
                 left = mid + 1
         return left
+    
+    # Given a capacity (that we iterate over), feasible function checks if number of days taken is more than given days.
