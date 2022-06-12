@@ -15,6 +15,6 @@ class Solution:
     
     def countBits(self, n: int) -> List[int]:
         ans = [0] * (n + 1)
-        for x in range(0, n + 1):
+        for x in range(n + 1):
             ans[x] = ans[x >> 1] + (x & 1) # x >> 1 is x/2 and x&1 is the same as x%2 i.e. least significant bit
         return ans
