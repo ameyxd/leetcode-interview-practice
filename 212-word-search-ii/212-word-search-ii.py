@@ -11,7 +11,7 @@ class TrieNode:
             curr = curr.children[char]
         curr.end_of_word = True
         
-    # for Time limit exceeded - add prune function
+    # for Time limit exceeded - add prune function: I still don't understand this
     def prune(self, word):
         curr = self
         stack = []
