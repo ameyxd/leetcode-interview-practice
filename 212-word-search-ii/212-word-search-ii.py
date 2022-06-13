@@ -50,7 +50,7 @@ class Solution:
 
             if node.end_of_word:
                 res.add(word)
-                root.prune(word)
+                root.prune(word) # prune from trie when new word found
             
             dfs(r + 1, c, node, word)
             dfs(r - 1, c, node, word)
