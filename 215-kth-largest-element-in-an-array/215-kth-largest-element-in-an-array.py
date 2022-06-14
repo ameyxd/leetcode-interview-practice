@@ -4,9 +4,9 @@ class Solution:
         # nums.sort()
         # return nums[len(nums) - k]
         
-        # Quickselect algorithm
+        # Solution 2: Quickselect algorithm
         # (In sorted array, we need the kth largest)
-        k = len(nums) - k
+        k = len(nums) - k # k is the index to look for if the array was sorted
         
         def quickSelect(l, r):
             pivot, p = nums[r], l
