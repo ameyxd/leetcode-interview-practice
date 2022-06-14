@@ -1,7 +1,10 @@
 class Solution:
     def combinationSum(self, candidates: List[int], target: int) -> List[List[int]]:
-        res = []
         
+        # The main concern the problem is trying to address is the duplicates
+        # Logic: tree where you make two decisions - either select or not select a candidate
+        
+        res = []
         
         def dfs(i, cur, total):
             if total == target:
