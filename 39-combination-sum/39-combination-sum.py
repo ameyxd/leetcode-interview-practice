@@ -3,6 +3,7 @@ class Solution:
         
         # The main concern the problem is trying to address is the duplicates
         # Logic: tree where you make two decisions - either select or not select a candidate
+        # Time complexity = 2 ^ target (worst case tree depth would be if all candidates are 1, so down go down one depth in tree until target is reached)
         
         res = []
         
