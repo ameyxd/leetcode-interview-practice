@@ -12,4 +12,11 @@ class Solution:
             if i + nums[i] >= goalPost: # if making jump of (nums[i]) from i takes us to or beyond the goalpost, we can shift goalpost backward
                 goalPost = i
         # either goal will be 0 or > 0
-        return True if goalPost == 0 else False
+        return goalPost == 0
+    
+        # #Same solution but moving forward instead: I found the backward pass more intuitive than this one
+        # reach = 0
+        # for i in range(len(nums)):
+        #     if i + nums[i] > reach: # If I make a jump from ith position to a new position, add to reach
+        #         reach = i
+        # return reach >= len(nums) - 1
