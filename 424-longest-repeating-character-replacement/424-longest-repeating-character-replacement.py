@@ -15,7 +15,7 @@ class Solution:
             if substringLen - mostFreqCount > k: # understand why this is correct - this condition is the starting point for code and intuition 
                 count[s[l]] -= 1
                 l += 1
-            res = max(res, r - l + 1)   
+            res = max(res, r - l + 1)   # can't use substringLen here because we just incremented l
                 
         return res
     
