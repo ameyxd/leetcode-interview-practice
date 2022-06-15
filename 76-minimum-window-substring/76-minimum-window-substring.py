@@ -1,10 +1,12 @@
 class Solution(object):
-    def minWindow(self, s, t):
+    def minWindow1(self, s, t):
         """
         :type s: str
         :type t: str
         :rtype: str
         """
+        # First find the valid substring, then reduce the length from the starting point
+
         start = 0
         from collections import Counter
         t_dict = Counter(t)
@@ -33,5 +35,38 @@ class Solution(object):
                         t_count += 1
                 start += 1
         return min_substring
+
+    # using better names
+    def minWindow(self, s, t):
+        """
+        :type s: str
+        :type t: str
+        :rtype: str
+        """
+        if t == "": return ""
+        l = 0
+        res, resLen = [-1, -1], float("infinity")
+        countT, window = {}, {}        
+        countT = Counter(t) # or for c in t: countT = 1 + countT.get(c, 0)
+        have, need = 0, len(countT)
         
-"""First find the valid substring, then reduce the length from the starting point"""
+        for r in range(len(s)):
+            c = s[r]
+            window[c] = 1 + window.get(c, 0)
+            
+            # does window[c] satisfy adding a character present in t? 
+            if c in countT and window[c] == countT[c]:
+                have += 1
+            # Valid string found if
+            while have == need:
+                if (r - l + 1) < resLen:
+                    res = [l, r]
+                    resLen = r - l + 1
+                # Shrink from left
+                window[s[l]] -= 1
+                # if we shrink and the char was present in t, have will decrease because you don't have that one char in updated substring
+                if s[l] in countT and window[s[l]] < countT[s[l]]:
+                    have -= 1
+                l += 1
+        l, r = res
+        return s[l: r + 1] if resLen != float("infinity") else ""
