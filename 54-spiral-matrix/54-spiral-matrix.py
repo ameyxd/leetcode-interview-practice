@@ -20,7 +20,9 @@ class Solution:
                 res.append(matrix[i][right - 1])
             right -= 1
             
-            if not  (left < right and top < bottom):
+            # if not  (left < right and top < bottom):
+            #     break
+            if len(res) == len(matrix[0]) * len(matrix):
                 break
             
             # get every i in bottom row
