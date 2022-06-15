@@ -69,4 +69,4 @@ class Solution(object):
                     have -= 1
                 l += 1
         l, r = res
-        return s[l: r + 1] if resLen != float("infinity") else ""
+        return s[l: r + 1]# if resLen != float("infinity") else ""
