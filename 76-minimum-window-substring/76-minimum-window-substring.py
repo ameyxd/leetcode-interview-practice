@@ -24,10 +24,10 @@ class Solution(object):
             # When t_count is 0, that means valid substring is found. Now try to reduce its size
             while t_count == 0:
                 window = end - start + 1
-                if not min_substring or window < len(min_substring):
+                if not min_substring or window < len(min_substring): # update min_substring
                     min_substring = s[start: end + 1]
                 left_char = s[start]
-                if left_char in t_dict: # reset t_dict and increment t_count
+                if left_char in t_dict: # add char back to t_dict and increment t_count
                     t_dict[left_char] += 1
                     if t_dict[left_char] > 0:
                         t_count += 1
