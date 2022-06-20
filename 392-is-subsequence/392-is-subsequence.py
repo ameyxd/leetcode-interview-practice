@@ -1,6 +1,6 @@
 class Solution:
     def isSubsequence(self, s: str, t: str) -> bool:
-        
+        # Recursive solution O(t)
         if not s:
             return True
         if not t:
@@ -12,5 +12,15 @@ class Solution:
         else:
             return self.isSubsequence(s, t[1:])
         return False
-        # return s.isSubset(t) or t.isSubset(s)
-        # return set(s) <= set(t) or set(t) <= set(s)
+
+    
+    # Two pointers solution O(t)
+    def isSubsequence1(self, s: str, t: str) -> bool:
+        left, right = 0, 0
+        while left < len(s) and right < len(t):
+            if s[left] == t[right]:
+                left += 1
+                right += 1
+            else:
+                right += 1
+        return left == len(s)
