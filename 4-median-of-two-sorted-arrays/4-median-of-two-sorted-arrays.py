@@ -23,6 +23,15 @@ class Solution:
             # x_part is the index where you partition nums1
             i = (left + right) // 2            
             j = half_len - i - 2 # -2 to account for x_part and y_part starting at 0; logic for y_part is: 2(x_part + y_part) = len(x) + len(y)
+            # (i + 1) + (j + 1) = (len(A) + len(B)) // 2
+            
+            # Another explanation for the -2 part:
+            # Because we need to convert lengths into indexes.
+            # E.x. A =  1 2 3 4 5 and B = 1 2 3 4 5
+            # A's midpoint would be index 2. We need midpoint in B to be index 1. 
+            # (i=2 + 1) + (j=? + 1) = half_len
+            # j = 1
+            # So 5 (avg length) - midpointA - 2 = midpointB
             
             Aleft = A[i] if i >= 0 else MIN_INT
             Aright = A[i + 1] if (i + 1) < len(A) else MAX_INT
