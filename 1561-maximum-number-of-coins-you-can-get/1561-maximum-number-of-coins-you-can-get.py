@@ -7,7 +7,6 @@ class Solution:
         res = 0
         n = len(piles)
         for i in range(n//3, n, 2):
-            print(piles[i])
             res += piles[i]
         return res
     
