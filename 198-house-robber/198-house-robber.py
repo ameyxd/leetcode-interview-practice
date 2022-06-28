@@ -1,6 +1,7 @@
 class Solution:
         
-    def rob(self, nums: List[int]) -> int:
+    # DP Recursive with memoization
+    def rob1(self, nums: List[int]) -> int:
         memo = {}
         def rob_helper(i, nums):
             if i >= len(nums): return 0
@@ -11,7 +12,19 @@ class Solution:
             memo[i] = ans
             return ans
         return rob_helper(0, nums)
+
+    def rob(self, nums: List[int]) -> int:
+        if len(nums) == 1:
+            return nums[0]
+        res = [None] * len(nums)
+        res[0] = nums[0]
+        res[1] = max(nums[0], nums[1])
         
+        for i in range(2, len(nums)):
+            res[i] = max(res[i - 2] + nums[i], res[i - 1])
+        return res[len(nums) - 1]
+
+    
     def rob_1(self, nums: List[int]) -> int:
         # Recurrence relationship: Either rob first house or rob second house: Break into subproblems
         # return max(nums[0] + self.rob(nums[2:]), self.rob(nums[1:]))
