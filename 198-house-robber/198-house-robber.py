@@ -1,15 +1,14 @@
 class Solution:
-    def __init__(self):
-        self.memo = {}
         
     def rob(self, nums: List[int]) -> int:
+        memo = {}
         def rob_helper(i, nums):
             if i >= len(nums): return 0
             
-            if i in self.memo: return self.memo[i]
+            if i in memo: return memo[i]
             
             ans = max(rob_helper(i + 1, nums), rob_helper(i + 2, nums) + nums[i])
-            self.memo[i] = ans
+            memo[i] = ans
             return ans
         return rob_helper(0, nums)
         
