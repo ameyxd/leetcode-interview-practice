@@ -5,6 +5,7 @@ class Solution:
         for i in range(len(s)):
             # odd length elements
             l, r = i, i
+            # Check for each element, what is the longest palindromic substring that can be formed with that char at center
             while l >=0 and r < len(s) and s[l] == s[r]:
                 if (r - l + 1) > resLen:
                     res = s[l:r + 1]
