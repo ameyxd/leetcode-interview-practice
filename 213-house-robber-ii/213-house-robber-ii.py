@@ -1,6 +1,6 @@
 class Solution:
     def rob(self, nums: List[int]) -> int:
-        def helper(nums):
+        def helper(nums): # This helper function is the solution of house robber 1
             rob1, rob2 = 0, 0
             for house in nums:
                 currRob = max(rob1 + house, rob2)
