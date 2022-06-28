@@ -6,7 +6,7 @@ class Solution:
             # odd length elements
             l, r = i, i
             # Check for each element, what is the longest palindromic substring that can be formed with that char at center
-            while l >=0 and r < len(s) and s[l] == s[r]:
+            while l >= 0 and r < len(s) and s[l] == s[r]:
                 if (r - l + 1) > resLen:
                     res = s[l:r + 1]
                     resLen = r - l + 1
@@ -15,7 +15,7 @@ class Solution:
                 
             # even length
             l, r = i, i + 1
-            while l >=0 and r < len(s) and s[l] == s[r]:
+            while l >= 0 and r < len(s) and s[l] == s[r]:
                 if (r - l + 1) > resLen:
                     res = s[l:r + 1]
                     resLen = r - l + 1
