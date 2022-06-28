@@ -17,12 +17,12 @@ class Solution:
         if len(nums) == 1:
             return nums[0]
         res = [None] * len(nums)
-        res[0] = nums[0]
+        res[0] = nums[0] # robber starts with nothing
         res[1] = max(nums[0], nums[1])
         
         for i in range(2, len(nums)):
             res[i] = max(res[i - 2] + nums[i], res[i - 1])
-        return res[len(nums) - 1]
+        return res[-1]
 
     
     def rob_1(self, nums: List[int]) -> int:
