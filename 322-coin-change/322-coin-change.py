@@ -2,6 +2,9 @@ class Solution:
     def coinChange(self, coins: List[int], amount: int) -> int:
         # Brute force - dfs backtracking: n choices in decision tree
         # Repeating subproblems - make tree diagram
+        # Time: O(amount * len(coins))
+        # Memory: O(amount))
+        
         MAX_INT = float("inf") # You can use amount + 1 instead of float inf
         dp = [MAX_INT] * (amount + 1) 
         dp[0] = 0 # min number of coins to sum to 0
