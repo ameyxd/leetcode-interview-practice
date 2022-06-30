@@ -1,5 +1,5 @@
 class Solution:
-    def topKFrequent1(self, nums: List[int], k: int) -> List[int]:
+    def topKFrequent(self, nums: List[int], k: int) -> List[int]:
         # O(n log k): Minheap of size k
         if k == len(nums):
             return nums
@@ -29,7 +29,7 @@ class Solution:
             res.append(heapq.heappop(heap)[1])
         return res
 
-    def topKFrequent(self, nums: List[int], k: int) -> List[int]:
+    def topKFrequent2(self, nums: List[int], k: int) -> List[int]:
         # O(n): Bucket sort like - need values to be in a range as a condition on input
         # Make hashmap of frequency, then make a list, where at index i store the value that occurs i times
         if k == len(nums):
