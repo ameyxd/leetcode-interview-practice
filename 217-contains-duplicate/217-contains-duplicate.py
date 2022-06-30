@@ -1,11 +1,8 @@
 class Solution:
     def containsDuplicate(self, nums: List[int]) -> bool:
-#         import collections
-#         c = collections.Counter(nums)
-#         if any(y > 1 for y in c.values()):
-#             return True
-#         else:
-#             return False
-        
-#         ## OR
-        return len(set(nums)) < len(nums)
+        count_dict = collections.Counter(nums)
+        # return not all(count == 1 for count in count_dict.values())
+        for count in list(count_dict.values()):
+            if count > 1:
+                return True
+        return False
