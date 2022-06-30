@@ -1,20 +1,19 @@
 class Solution:
     def trap(self, height: List[int]) -> int:
-        # Get max left and right heights at each position i and get min of that. Subtract that from height at ith position to get water that can be trapped at that position
-        # First you can use three lists to store the maxLeft, maxRight and min(maxLeft, maxRight) at each position, the optimize it by using two pointers instead
-        if not height: return 0
-        l, r = 0, len(height) - 1
-        lmax, rmax = height[l], height[r]
-        res = 0
+        # l, r = 0, len(nums) - 1
+        # maxLeftH, maxRightH = height[l], height[r]
         
-        while l < r:
-            if lmax < rmax:
-                l += 1
-                lmax = max(lmax, height[l])
-                res += lmax - height[l] 
-            else:
-                r -= 1
-                rmax = max(rmax, height[r])
-                res += rmax - height[r]
-            
+        maxLeft, maxRight = [0] * len(height), [0] * len(height)
+
+        for i in range(1, len(height)):
+            maxLeft[i] = max(height[i - 1], maxLeft[i - 1])
+        
+        for i in range(len(height) - 2, -1, -1):
+            maxRight[i] = max(height[i + 1], maxRight[i + 1])
+        
+        res = 0
+        for i in range(len(height)):
+            waterAti = min(maxLeft[i], maxRight[i]) - height[i]
+            if waterAti > 0:
+                res += waterAti
         return res
