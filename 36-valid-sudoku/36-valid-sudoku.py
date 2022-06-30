@@ -1,19 +1,17 @@
 class Solution:
     def isValidSudoku(self, board: List[List[str]]) -> bool:
-        # For each row, column and square: Have a hashset
-        # Time: O(1)
-        # Key - col number, value - set of all numbers in the column
-        cols = collections.defaultdict(set)
-        rows = collections.defaultdict(set)
-        squares = collections.defaultdict(set) # key = row/3, col/3
+        # check current validity only. not potential validity after filling.
+        from collections import defaultdict
         
-        for r in range(9):
-            for c in range(9):
-                if board[r][c] == ".":
+        rowDict, colDict, squareDict = defaultdict(set), defaultdict(set), defaultdict(set)
+        ROWS, COLS = 9, 9
+        for row in range(ROWS):
+            for col in range(COLS):
+                if board[row][col] == '.':
                     continue
-                if board[r][c] in rows[r] or board[r][c] in cols[c] or board[r][c] in squares[(r //3, c // 3)]: # dupes found
+                if (board[row][col] in rowDict[row]) or (board[row][col] in colDict[col]) or (board[row][col] in squareDict[(row // 3, col //3)]):
                     return False
-                cols[c].add(board[r][c])
-                rows[r].add(board[r][c])
-                squares[(r // 3, c // 3)].add(board[r][c])
+                rowDict[row].add(board[row][col])
+                colDict[col].add(board[row][col])
+                squareDict[(row // 3, col // 3)].add(board[row][col])
         return True
