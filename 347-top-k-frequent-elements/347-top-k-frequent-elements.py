@@ -1,46 +1,30 @@
-from collections import Counter
-import heapq
-
 class Solution:
     def topKFrequent(self, nums: List[int], k: int) -> List[int]:
-#         # Solution 1: Using Heap O(k log n)
-#         if k == len(nums):
-#             return nums
+        # O(n log k): Minheap of size k
+        if k == len(nums):
+            return nums
+        countDict = Counter(nums)
+        heap, res = [], []
+        for num, count in countDict.items():
+            heapq.heappush(heap, (count, num))
+            if len(heap) > k:
+                heapq.heappop(heap)
+        return [elem[1] for elem in heap]
         
-#         count_dict = Counter(nums)
-#         heap = []
-#         result = []
-        
-#         # Default heap is minheap: convert to maxheap by storing negative of the keys
-#         # Step 1: Push into maxheap all the elements - one better way would be to maintain min heap that’s kept at size k, if its bigger than k pop the min, by the end it should be left with k largest;
-#         for num, count in count_dict.items():
-#             heapq.heappush(heap, (-count, num))
-
-#         result = []
-        
-#         for _ in range(k):
-#             temp = heapq.heappop(heap)
-#             result.append(temp[1])
-            
-#         return result
-
-        # Solution 2: Using bucket sort like array storing list of values that have a particular count at count position: O(n)
+        # for _ in range(k):
+        #     res.append(heapq.heappop(heap)[1])
+        # return res
     
-        # Step 1: Make freq list of lists
-        freq = [[] for i in range(len(nums) + 1)] # Map all nums to the index of the number of times they occur using count_dict
-        count_dict = collections.Counter(nums)
-        
-        for num, count in count_dict.items():
-            freq[count].append(num)
-
-        # Step 2: Start from the end and traverse to the start populating res with the top k most frequently occuring elements and break when res is full, i.e., at length k 
-        res = []
-        # Start from the end of the freq list and get the top k most frequent elements        
-        for i in range(len(freq) - 1, 0, -1):
-            for n in freq[i]:
-                res.append(n)
-                if len(res) == k:
-                    return res
-            
-        
+    def topKFrequent1(self, nums: List[int], k: int) -> List[int]:
+        # O(k log n): Maxheap of size n
+        if k == len(nums):
+            return nums
     
+        countDict = Counter(nums)
+        heap, res = [], []
+        for count, num in countDict.items():
+            heapq.heappush(heap, (-count, num))
+        
+        for _ in range(k):
+            res.append(heapq.heappop(heap)[1])
+        return res
