@@ -1,13 +1,14 @@
 class Solution:
     def maxArea(self, height: List[int]) -> int:
-        # Use two pointers and update them based on the condition
-        l, r = 0, len(height) - 1
-        res = 0
-        while l < r:
-            area = (r - l) * min(height[l], height[r])
-            res = max(res, area)
-            if height[l] < height[r]:
-                l += 1
-            else: # if equal any pointer can be moved
-                r -= 1
-        return res
+        # Area = distance btw two vertical lines * min of the two vertical lines
+        # start with largest distance btw two lines
+        left, right = 0, len(height) - 1
+        maxArea = 0
+        while left < right:
+            area = (right - left) * min(height[left], height[right])
+            maxArea = max(area, maxArea)
+            if height[left] <= height[right]:
+                left += 1
+            else:
+                right -= 1
+        return maxArea
