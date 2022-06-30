@@ -1,7 +1,7 @@
 class Solution:
-    def trap(self, height: List[int]) -> int:
-        # l, r = 0, len(nums) - 1
-        # maxLeftH, maxRightH = height[l], height[r]
+    def trap1(self, height: List[int]) -> int:
+        
+        # Strat: maintain the max height to the left and right of any point i and use the min of those two to calculate water trapped
         
         maxLeft, maxRight = [0] * len(height), [0] * len(height)
 
@@ -16,4 +16,25 @@ class Solution:
             waterAti = min(maxLeft[i], maxRight[i]) - height[i]
             if waterAti > 0:
                 res += waterAti
+        return 
+    
+    def trap(self, height: List[int]) -> int:
+        # O(1) memory solution
+        # Strat: maintain the max height to the left and right of any point i and use the min of those two to calculate water trapped
+        # Use two pointers
+        
+        left, right = 0, len(height) - 1
+        maxLeft, maxRight = height[left], height[right]
+        res = 0
+        
+        while left < right:
+            if maxLeft <= maxRight:
+                left += 1
+                maxLeft = max(maxLeft, height[left])
+                res += maxLeft - height[left] # since maxLeft is being updated before this, no need to check if maxLeft - height[left] > 0 or not
+            else:
+                right -= 1
+                maxRight = max(maxRight, height[right])
+                res += maxRight - height[right]
+            
         return res
