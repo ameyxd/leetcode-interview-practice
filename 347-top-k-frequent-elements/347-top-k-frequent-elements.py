@@ -1,5 +1,5 @@
 class Solution:
-    def topKFrequent1(self, nums: List[int], k: int) -> List[int]:
+    def topKFrequent(self, nums: List[int], k: int) -> List[int]:
         # O(n log k): Minheap of size k
         if k == len(nums):
             return nums
@@ -15,7 +15,7 @@ class Solution:
         #     res.append(heapq.heappop(heap)[1])
         # return res
     
-    def topKFrequent(self, nums: List[int], k: int) -> List[int]:
+    def topKFrequent1(self, nums: List[int], k: int) -> List[int]:
         # O(k log n): Maxheap of size n
         if k == len(nums):
             return nums
