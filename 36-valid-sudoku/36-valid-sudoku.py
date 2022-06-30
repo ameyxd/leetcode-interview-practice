@@ -9,7 +9,7 @@ class Solution:
             for col in range(COLS):
                 if board[row][col] == '.':
                     continue
-                if (board[row][col] in rowDict[row]) or (board[row][col] in colDict[col]) or (board[row][col] in squareDict[(row // 3, col //3)]):
+                if (board[row][col] in rowDict[row]) or (board[row][col] in colDict[col]) or (board[row][col] in squareDict[(row // 3, col // 3)]):
                     return False
                 rowDict[row].add(board[row][col])
                 colDict[col].add(board[row][col])
