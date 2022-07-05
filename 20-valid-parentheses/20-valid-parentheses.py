@@ -1,14 +1,14 @@
 class Solution:
     def isValid(self, s: str) -> bool:
-        d = {'}': '{', ']': '[', ')':'('}
-        
+        parDict = {'}':'{', ']':'[', ')':'('}
         stack = []
-        for bracket in s:
-            if bracket in d.values(): #opening bracket
-                stack.append(bracket)
-            elif bracket in d.keys(): # If it is a closed bracket, pop from stack and compare
-                curr_open = stack.pop() if stack else "%"
-                if d[bracket] != curr_open:
+        
+        for char in s:
+            if char in parDict.values():
+                stack.append(char)
+            if char in parDict:
+                topStack = stack.pop() if stack else "!"
+                if not parDict[char] == topStack:
                     return False
-        if len(stack) == 0:
-            return True
+
+        return len(stack) == 0
