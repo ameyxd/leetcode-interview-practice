@@ -1,36 +1,34 @@
 class TrieNode:
     def __init__(self):
         self.children = {}
-        self.end_of_word = None
-    
-class Trie:
+        self.end = None
 
+class Trie:
     def __init__(self):
         self.root = TrieNode()
 
     def insert(self, word: str) -> None:
-        curr_node = self.root
+        curr = self.root
         for char in word:
-            if char not in curr_node.children:
-                curr_node.children[char] = TrieNode()
-            curr_node = curr_node.children[char]
-        curr_node.end_of_word = True
+            if char not in curr.children:
+                curr.children[char] = TrieNode()
+            curr = curr.children[char]
+        curr.end = True
         
-
     def search(self, word: str) -> bool:
-        curr_node = self.root
+        curr = self.root
         for char in word:
-            if char not in curr_node.children:
+            if char not in curr.children:
                 return False
-            curr_node = curr_node.children[char]
-        return curr_node.end_of_word
+            curr = curr.children[char]
+        return curr.end
 
     def startsWith(self, prefix: str) -> bool:
-        curr_node = self.root
+        curr = self.root
         for char in prefix:
-            if char not in curr_node.children:
+            if char not in curr.children:
                 return False
-            curr_node = curr_node.children[char]
+            curr = curr.children[char]
         return True
         
 
