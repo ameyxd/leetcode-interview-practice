@@ -1,18 +1,14 @@
 class Solution:
     def eraseOverlapIntervals(self, intervals: List[List[int]]) -> int:
-        intervals.sort()
-        print(intervals)
-        # intervals.sort()
-        res = 0
-        lastEnd = intervals[0][1]
+        # greedy approach to finding max
+        intervals.sort(key=lambda i: i[0])
+        minIntervals = 0
+        output = [intervals[0]]
         for start, end in intervals[1:]:
-            # Non-overlapping
-            if start >= lastEnd:
-                lastEnd = end # Update end time
-            # There is overlap -> one of the intervals amongst the current interval and the previous interval needs to be removed
-            # Decide which interval to remove based on which interval ends first - since that reduces chances of intervals after it overlapping with it, i.e., shorter the interval, the better, so keep the shorter, i.e.m one that ends first
+            lastEnd = output[-1][1]
+            if start < lastEnd: # overlap
+                minIntervals += 1
+                output[-1][1] = min(lastEnd, end) # since smaller one of the two will have lesser chance of overlap with other intervals
             else:
-                res += 1 # Number of intervals to be deleted
-                lastEnd = min(end, lastEnd) # erase one with largetr end time
-        return res
-    
+                output.append([start, end])
+        return minIntervals
