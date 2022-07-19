@@ -30,17 +30,20 @@ class Solution:
                 break
             curr = curr.children[char]
             res.append(curr.words)
+        remain = len(word) - len(res)
+        for _ in range(remain):
+            res.append([])
         return res        
     
     
-    def suggestedProducts1(self, products: List[str], searchWord: str) -> List[List[str]]:
+    def suggestedProducts(self, products: List[str], searchWord: str) -> List[List[str]]:
         for product in products:
             self.insert(product)
         
         return self.getSuggestions(searchWord)
     
     # Two pointers approach
-    def suggestedProducts(self, products: List[str], searchWord: str) -> List[List[str]]:
+    def suggestedProducts1(self, products: List[str], searchWord: str) -> List[List[str]]:
         l, r = 0, len(products) - 1
         res = []
         products.sort()
