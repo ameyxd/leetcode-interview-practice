@@ -1,14 +1,15 @@
 class Solution:
     def merge(self, intervals: List[List[int]]) -> List[List[int]]:
-        # Sort intervals by start value
-        intervals.sort(key = lambda i : i[0]) # in python if you just use sort it will default to using the first value anyways so you can use intervals.sort()
-        output = [intervals[0]]
-        # Check if there is overlap in consecutive intervals
+        intervals.sort(key=lambda i: i[0])
+        res = [intervals[0]]
+        # Remember lastEnd
         for start, end in intervals[1:]:
-            lastEnd = output[-1][1]
-            # Merge if overlap
+            lastEnd = res[-1][1]
+            # Overlap
             if start <= lastEnd:
-                output[-1][1] = max(lastEnd, end)
+                res[-1][1] = max(end, lastEnd)
+            # No overlap
             else:
-                output.append([start, end])
-        return output
+                res.append([start, end])
+        
+        return res
