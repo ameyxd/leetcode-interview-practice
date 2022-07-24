@@ -1,17 +1,11 @@
 class Solution:
     def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
-        # dict mapping counts as list to anagram list
-        # key: ([26 ints]) -> value: [list of anagrams]
-        groupDict = {}
-        for word in strs:
-            key = [0] * 26
-            for char in word:
-                pos = ord(char) - ord('a')
-                key[pos] += 1
-            if tuple(key) in groupDict: # This if-else block can be removed by using defaultdict
-                groupDict[tuple(key)].append(word)
-            else:
-                groupDict[tuple(key)] = [word]
-        return groupDict.values()
+        # Strategy: Map character counts for each string as a list TO the anagram strings using a dict
+        res = defaultdict(list) # defautdict so we don't have to worry about keyerror key not present
         
-        
+        for s in strs:
+            charCount = [0] * 26
+            for char in s:
+                charCount[ord(char) - ord("a")] += 1 # so a-z can be mapped to 0-26
+            res[tuple(charCount)].append(s)
+        return res.values()
