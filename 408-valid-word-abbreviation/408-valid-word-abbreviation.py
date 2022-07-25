@@ -1,5 +1,6 @@
 class Solution:
     def validWordAbbreviation(self, word: str, abbr: str) -> bool:
+        # Two pointers
         i, j = 0, 0
         while i < len(word) and j < len(abbr):
             if abbr[j] == '0':
