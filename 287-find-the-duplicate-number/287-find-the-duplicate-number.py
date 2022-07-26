@@ -16,7 +16,8 @@ class Solution:
         for i in range(len(nums)):
             nums[i] = abs(nums[i])
         return cur
-    
+
+    # Modification of fast and slow find beginning of linked list cycle
     def findDuplicate(self, nums: List[int]) -> int:
         fast = slow = nums[0]
         while True:
