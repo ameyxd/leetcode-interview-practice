@@ -21,12 +21,14 @@ class Solution:
                 if (r == 0 or c == 0 or r == ROWS - 1 or c == COLS - 1):
                     if board[r][c] == 'O':
                         dfs(r, c)
-                        
+        
+        # All the Os were never reached by DFS -> convert these to Xs
         for r in range(ROWS):
             for c in range(COLS):
                 if board[r][c] == 'O':
                     board[r][c] = 'X'
         
+        # All the T's are reachable from O -> Mark them as Os
         for r in range(ROWS):
             for c in range(COLS):
                 if board[r][c] == 'T':
