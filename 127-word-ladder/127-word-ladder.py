@@ -3,7 +3,7 @@ class Solution:
         # Levelwise BFS: it matters how you build the adj list
         if endWord not in wordList:
             return 0
-        # Adj list stores a pattern mapped to the words that match that pattern O()
+        # Adj list stores a pattern mapped to the words that match that pattern O(nm^2)
         adj = collections.defaultdict(list)
         wordList.append(beginWord)
         for word in wordList:
