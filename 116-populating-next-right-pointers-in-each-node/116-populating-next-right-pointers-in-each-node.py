@@ -27,3 +27,22 @@ class Solution:
                     queue.append(node.right)
                 prev = node
         return root
+    
+    # Save space without using queue
+    def connect(self, root: 'Optional[Node]') -> 'Optional[Node]':
+        # traverse leftmost node and make use of next pointers to make links.
+        if not root:
+            return root
+        leftmost = root
+        while leftmost.left:
+            curr = leftmost
+            while curr:
+                # establish connection between two nodes with same parent
+                if curr.left and curr.right:
+                    curr.left.next = curr.right
+                # establish connection between two nodes with different parents
+                if curr.next:
+                    curr.right.next = curr.next.left
+                curr = curr.next
+            leftmost = leftmost.left
+        return root
