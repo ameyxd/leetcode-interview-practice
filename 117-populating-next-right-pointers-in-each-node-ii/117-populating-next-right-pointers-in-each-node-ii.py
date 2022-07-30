@@ -9,7 +9,8 @@ class Node:
 """
 
 class Solution:
-    def connect(self, root: 'Node') -> 'Node':
+    # BFS level order
+    def connect1(self, root: 'Node') -> 'Node':
         if not root:
             return root
         queue = collections.deque([root])
@@ -24,4 +25,21 @@ class Solution:
                 if node.right:
                     queue.append(node.right)
                 prev = node
+        return root
+
+    # No extra space using pointers
+    def connect(self, root: 'Node') -> 'Node':
+        tail = dummy = Node(0)        
+        node = root
+        while node:
+            tail.next = node.left
+            if tail.next:
+                tail = tail.next
+            tail.next = node.right
+            if tail.next:
+                tail = tail.next
+            node = node.next
+            if not node:
+                tail = dummy
+                node = dummy.next                
         return root
