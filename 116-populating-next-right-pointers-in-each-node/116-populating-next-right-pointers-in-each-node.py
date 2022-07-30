@@ -9,6 +9,7 @@ class Node:
 """
 
 class Solution:
+    # BFS level order
     def connect1(self, root: 'Optional[Node]') -> 'Optional[Node]':
         if not root:
             return root
