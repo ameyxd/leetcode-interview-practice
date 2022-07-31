@@ -11,23 +11,22 @@ class Solution:
         
         # Returns true if adding an edge u, v creates a cycle
         def union(u, v):
-            parent_u = find(u)
-            parent_v = find(v)
+            parent_u, parent_v = find(u), find(v)
             
-            if parent_u == parent_v:
-                # cycle is present
+            if parent_u == parent_v: # Creates cycle
                 return True
             else:
                 # graph is still a tree without a cycle
                 parent[parent_u] = parent_v
-        redundant = None
+                
+        redundant = []
         for u, v in edges:
             # Check if adding edge creates cycle 
             if union(u, v):
-                redundant = [u, v] # we don't return u, v directly, because we need to return the last occurrence of a cycle creating edge
+                redundant = [u, v]# we don't return u, v directly, because we need to return the last occurrence of a cycle creating edge
         
         return redundant
-        
+                
         
     # DFS solution        
     def findRedundantConnection_dfs(self, edges: List[List[int]]) -> List[int]:
