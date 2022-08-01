@@ -6,7 +6,7 @@
 #         self.right = right
 class Solution:
     # Recursive
-    def goodNodes(self, root: TreeNode) -> int:
+    def goodNodes1(self, root: TreeNode) -> int:
         self.numGoodNodes = 0
         
         def traverse(node, maxSoFar):
@@ -22,16 +22,16 @@ class Solution:
         
     
     # Iterative
-    def goodNodes1(self, root: TreeNode) -> int:
+    def goodNodes(self, root: TreeNode) -> int:
         stack = [(root, float("-inf"))]
         numGoodNodes = 0
         while stack:
-            node = stack.pop()
+            node, maxSoFar = stack.pop()
             if maxSoFar <= node.val:
                 maxSoFar = node.val
                 numGoodNodes += 1
             if node.right:
-                stack.append(node.right, maxSoFar)
+                stack.append((node.right, maxSoFar))
             if node.left:
                 stack.append((node.left, maxSoFar))
         return numGoodNodes
