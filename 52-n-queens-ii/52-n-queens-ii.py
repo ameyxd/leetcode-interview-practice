@@ -4,7 +4,7 @@ class Solution:
         col = set()
         posDiag = set() # (r + c)
         negDiag = set() # (r - c)
-        board = [["."] * ROWS for c in range(COLS)]
+        board = [[0] * ROWS for c in range(COLS)]
         solutions = [0]
         
         def backtrack(r):
@@ -22,7 +22,7 @@ class Solution:
                     col.add(c)
                     posDiag.add(r + c)
                     negDiag.add(r - c)
-                    board[r][c] = "Q"
+                    board[r][c] = 1
                     
                     # backtrack
                     backtrack(r + 1)
@@ -31,7 +31,7 @@ class Solution:
                     col.remove(c)
                     posDiag.remove(r + c)
                     negDiag.remove(r - c)
-                    board[r][c] = "."
+                    board[r][c] = 0
                     
         backtrack(0)
         return solutions[0]
