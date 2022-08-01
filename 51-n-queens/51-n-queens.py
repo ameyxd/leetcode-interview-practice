@@ -1,5 +1,9 @@
 class Solution:
     def solveNQueens(self, n: int) -> List[List[str]]:
+        # Time complexity = O(N!) possible positions for the queens
+        # Space complexity = O(n), since the maximum recursion depth is n, also the length for all three hashsets.
+
+
         ROWS, COLS = n, n
         col = set()
         posDiag = set() # store (r + c)
