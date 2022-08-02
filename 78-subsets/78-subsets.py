@@ -32,8 +32,11 @@ class Solution:
         def backtrack(start):
             res.append(subset.copy())
             for i in range(start, len(nums)):
+                # Place
                 subset.append(nums[i])
+                # Explore
                 backtrack(i + 1)
+                # Unplace
                 subset.pop()
         
         backtrack(0)
