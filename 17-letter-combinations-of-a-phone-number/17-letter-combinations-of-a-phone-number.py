@@ -1,4 +1,5 @@
 class Solution:
+    # Backtracking
     def letterCombinations(self, digits: str) -> List[str]:
         if len(digits) == 0:
             return []
@@ -18,3 +19,4 @@ class Solution:
         backtrack(0)
         
         return res
+    
