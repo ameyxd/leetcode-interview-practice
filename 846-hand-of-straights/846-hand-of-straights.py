@@ -4,11 +4,11 @@ class Solution:
             return False
         # If I know the first number in one of the group, I know the whole group.
         # Smallest number can only be a part of one group of groupSize size
-#         count = {}
-#         for n in hand:
-#             count[n] = 1 + count.get(n, 0)
+        count = {}
+        for n in hand:
+            count[n] = 1 + count.get(n, 0)
         
-#         hand.sort() # Or use minHeap to pull out smallest value
+        hand.sort() # Or use minHeap to pull out smallest value
         
 #         i = 0
 #         while i < len(hand):
@@ -29,17 +29,17 @@ class Solution:
 #         return True
 
         n, W = len(hand), groupSize
-        counter = Counter(hand) # O(n)
+        # counter = Counter(hand) # O(n)
         hand.sort() # O(nlogn)
         i, n = 0, len(hand)
         while i < n: # O(n)
             cur = hand[i]
             for j in range(W): # O(W)
-                if cur+j not in counter:
+                if cur+j not in count:
                     return False
-                counter[cur+j] -= 1
-                if counter[cur+j] == 0:
-                    del counter[cur+j]
-            while i < n and hand[i] not in counter:
+                count[cur+j] -= 1
+                if count[cur+j] == 0:
+                    del count[cur+j]
+            while i < n and hand[i] not in count:
                 i += 1
         return True
