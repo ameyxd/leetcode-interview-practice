@@ -10,36 +10,20 @@ class Solution:
         
         hand.sort() # Or use minHeap to pull out smallest value
         
-#         i = 0
-#         while i < len(hand):
-#             first = hand[i]
-#             # Make groups
-#             for i in range(groupSize):
-#                 nextNum = i + first
-#                 if nextNum not in count: # Value we are looking for isn't available to use
-#                     print(nextNum)
-#                     return False
-#                 count[nextNum] -= 1
-#                 # Remove the value from the counter if it has been exhausted from the count dict
-#                 if count[nextNum] == 0:
-#                     del count[nextNum]
-#             # set value for first position in next group as the next valid entry
-#             while i < len(hand) and hand[i] not in count:
-#                 i += 1
-#         return True
-
-        n, W = len(hand), groupSize
-        # counter = Counter(hand) # O(n)
-        hand.sort() # O(nlogn)
-        i, n = 0, len(hand)
-        while i < n: # O(n)
-            cur = hand[i]
-            for j in range(W): # O(W)
-                if cur+j not in count:
+        i = 0
+        while i < len(hand):
+            first = hand[i]
+            # Make groups
+            for j in range(groupSize):
+                nextNum = j + first
+                if nextNum not in count: # Value we are looking for isn't available to use
+                    print(nextNum)
                     return False
-                count[cur+j] -= 1
-                if count[cur+j] == 0:
-                    del count[cur+j]
-            while i < n and hand[i] not in count:
+                count[nextNum] -= 1
+                # Remove the value from the counter if it has been exhausted from the count dict
+                if count[nextNum] == 0:
+                    del count[nextNum]
+            # set value for first position in next group as the next valid entry
+            while i < len(hand) and hand[i] not in count:
                 i += 1
         return True
