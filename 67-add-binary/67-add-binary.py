@@ -15,20 +15,15 @@ class Solution:
         ans = []
         carry = 0
         for i in range(n):
-            curr = carry
-            if a[i] == '1':
-                curr += 1
-            if b[i] == '1':
-                curr += 1
-            rem = curr % 2
-            carry = curr // 2
-            
-            if rem:
+            dig_tot = carry + int(a[i]) + int(b[i])
+            carry = dig_tot // 2
+            dig_tot = dig_tot % 2
+            if dig_tot:
                 ans.append('1')
             else:
                 ans.append('0')
         if carry:
             ans.append('1')
-
+            
         return "".join(ans[::-1])
         
