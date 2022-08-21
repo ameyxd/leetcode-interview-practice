@@ -21,6 +21,7 @@ class Solution:
                     num += dig * 10**k
                     k += 1
                 # push back into stack in reverse order num times
+                # need to push everything back to stack because of nesting!
                 for _ in range(num):
                     for i in range(len(currString) - 1, -1, -1):
                         stack.append(currString[i])
